@@ -1,0 +1,60 @@
+{'and': 1151
+ 'control': 21
+ 'industrial': 13
+ 'polymer': 1
+ 'civil': 29
+ 'communication': 883
+ 'ceramic': 1
+ 'engineering': 2878
+ 'metallurgical': 2
+ 'technology': 670
+ 'telecommunications': 121
+ 'information': 690
+ 'management': 1
+ 'networking': 1
+ 'eng': 32
+ 'aeronautical': 3
+ 'chemical': 9
+ 'application': 244
+ 'production': 11
+ 'electrical': 280
+ 'systems': 2
+ 'electronics': 1288
+ 'biomedical': 2
+ 'engine': 1
+ 'automobile/automotive': 5
+ 'telecommunication': 6
+ 'power': 3
+ 'instrumentation': 93
+ 'automation': 6
+ 'combustion': 1
+ 'internal': 1
+ 'applied': 9
+ 'embedded': 1
+ 'science': 780
+ '&': 911
+ 'computer': 1601
+ 'mechatronics': 4
+ 'mechanical': 207
+ 'biotechnology': 15
+ 'other': 13}
+ 
+ computer
+ mechanical
+ biotechnology
+ science
+ applied
+ instrumentation
+ electronics
+ electrical
+ application
+ production
+ information
+ eng 
+ telecommunications
+ technology
+ civil
+ industrial
+ control
+ engineering
+ other
