@@ -1,0 +1,23 @@
+https://cran.r-project.org/web/packages/fitdistrplus/vignettes/paper2JSS.pdf
+On the Consistency of Ordinal Regression Methods - http://arxiv.org/pdf/1408.2327v7.pdf
+mord: Ordinal Regression in Python - https://pythonhosted.org/mord/
+
+@phdthesis{pedregosaizquierdo:tel-01100921,
+  TITLE = {{Feature extraction and supervised learning on fMRI : from practice to theory}},
+  AUTHOR = {Pedregosa-Izquierdo, Fabian},
+  URL = {https://tel.archives-ouvertes.fr/tel-01100921},
+  NUMBER = {2015PA066015},
+  SCHOOL = {{Universit{\'e} Pierre et Marie Curie - Paris VI}},
+  YEAR = {2015},
+  MONTH = Feb,
+  KEYWORDS = {Decoding ; Ordinal regression ; D{\'e}codage ; IRMf ; BOLD ; Estimation de variables ; Apprentissage supervis{\'e} ; R{\'e}gression ordinale},
+  TYPE = {Theses},
+  PDF = {https://tel.archives-ouvertes.fr/tel-01100921/file/2015PA066015.pdf},
+  HAL_ID = {tel-01100921},
+  HAL_VERSION = {v2},
+}
+~
+~
+~
+~
+
