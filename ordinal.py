@@ -58,51 +58,87 @@ def main():
     inputmat = inputFrame.as_matrix()
     X = inputmat[:,1:-1]
     Y = inputmat[:,-1:]
-    '''
+
+
     X_train, X_test, y_train, y_test = train_test_split(X, Y, test_size =500, random_state=5)
+
+    # X_train_scaled = scale(X_train)
+    scaler_train = StandardScaler().fit(X)
+    X_trans_train = scaler_train.transform(X_train)
+    X_trans_test = scaler_train.transform(X_test)
+
+    y_train = np.ndarray.flatten(y_train)
+    y_train = y_train.astype(int)
+    y_test = np.ndarray.flatten(y_test)
+    y_test = y_test.astype(int)
+
     X_scaled = scale(X)
     scaler = StandardScaler().fit(X)
     X_trans = scaler.transform(X)
-    '''
-
-    clf2 = threshold_based.LogisticAT(alpha=1.)
-    tempy = np.ndarray.flatten(Y)
-    tempy = tempy.astype(int)
-
-    clf2.fit(X, tempy)
-    print('Mean Absolute Error of LogisticAT %s' %
-    metrics.mean_absolute_error(clf2.predict(X), tempy))
-
-    clf3 = threshold_based.LogisticIT(alpha=1.)
-    clf3.fit(X, tempy)
-    print('Mean Absolute Error of LogisticIT %s' %
-    metrics.mean_absolute_error(clf3.predict(X), tempy))
-
-    clf4 = threshold_based.LogisticSE(alpha=1.)
-    clf4.fit(X, tempy)
-    print('Mean Absolute Error of LogisticSE %s' %
-    metrics.mean_absolute_error(clf4.predict(X), tempy))
 
 
+    for i in range(-10,10):
+        alpha = 10**i;
+        clf2 = regression_based.OrdinalRidge(alpha=alpha)
+        clf2.fit(X_trans_train, y_train)
+        error = metrics.mean_absolute_error(clf2.predict(X_trans_train), y_train)
+        error2 = metrics.mean_absolute_error(clf2.predict(X_trans_test), y_test)
+        print('Mean Absolute Error of LAD %s %s %s' %(alpha, error, error2))
+
+    print "Done"
+
+    for i in range(-10,10):
+        alpha = 10**i;
+        clf2 = threshold_based.LogisticAT(alpha=alpha)
+        clf2.fit(X_trans_train, y_train)
+        error = metrics.mean_absolute_error(clf2.predict(X_trans_train), y_train)
+        error2 = metrics.mean_absolute_error(clf2.predict(X_trans_test), y_test)
+        print('Mean Absolute Error of LogisticAT %s %s %s' %(alpha, error, error2))
+
+    print "Done"
+
+    for i in range(-10,10):
+        alpha = 10**i;
+        clf2 = threshold_based.LogisticIT(alpha=alpha)
+        clf2.fit(X_trans_train, y_train)
+        error = metrics.mean_absolute_error(clf2.predict(X_trans_train), y_train)
+        error2 = metrics.mean_absolute_error(clf2.predict(X_trans_test), y_test)
+        print('Mean Absolute Error of LogisticIT %s %s %s' %(alpha, error, error2))
+
+    print "Done"
+
+    for i in range(-10,10):
+        alpha = 10**i;
+        clf2 = threshold_based.LogisticSE(alpha=alpha)
+        clf2.fit(X_trans_train, y_train)
+        error = metrics.mean_absolute_error(clf2.predict(X_trans_train), y_train)
+        error2 = metrics.mean_absolute_error(clf2.predict(X_trans_test), y_test)
+        print('Mean Absolute Error of LogisticSE %s %s %s' %(alpha, error, error2))
+
+
+    # clf2 = threshold_based.LogisticAT(alpha=1.)
+    # tempy = np.ndarray.flatten(Y)
+    # tempy = tempy.astype(int)
+    #
+    # clf2.fit(X, tempy)
+    # print clf2.predict(X)
+    # print('Mean Absolute Error of LogisticAT %s' %
+    # metrics.mean_absolute_error(clf2.predict(X), tempy))
+
+    # clf3 = threshold_based.LogisticIT(alpha=1.)
+    # clf3.fit(X, tempy)
+    # print('Mean Absolute Error of LogisticIT %s' %
+    # metrics.mean_absolute_error(clf3.predict(X), tempy))
+    #
+    # clf4 = threshold_based.LogisticSE(alpha=1.)
+    # clf4.fit(X, tempy)
+    # print('Mean Absolute Error of LogisticSE %s' %
+    # metrics.mean_absolute_error(clf4.predict(X), tempy))
 
 
 
 
-    """pipe = Pipeline([
-        ('preprocessing', StandardScaler()),
-        ('custom_ridge', Custom_Ridge()),
-    ])
 
-    parameters = {
-        'custom_ridge__alpha': (0.00001, 0.001, 0.001, 0.01, 0.1, 1.0, 10, 100, 1000, 100000 ),
-        'custom_ridge__max_iter': (10, 100, 1000, 10000),
-    }
-
-    pipe.set_params(custom_ridge__alpha = 1.0, custom_ridge__max_iter = 100)
-    pipe.fit(X,Y)
-    ypredict = pipe.predict(X)
-    print testscore(Y,ypredict)
-    print pipe.score(X,Y)"""
 
 
     # grid_search = GridSearchCV(pipe, parameters, n_jobs=-1, verbose=1)
